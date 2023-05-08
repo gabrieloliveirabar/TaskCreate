@@ -1,0 +1,68 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         String   @id @default(uuid())
+  name       String
+  datebirth  String
+  cpf        String   @db.VarChar(11)
+  email      String   
+  password   String   @db.VarChar(60) 
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  isAdm      Boolean  @default(false)
+
+  tasks Task[]
+  address Address?
+
+  @@unique([cpf, email])
+  @@map("users")
+}
+
+model Task {
+  id String @id @default(uuid())
+  title String   
+  description String 
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  status Boolean @default(true)
+  categorie Categoria
+  user_id String
+
+  user User @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate:Cascade)
+
+  @@map("tasks")
+  
+
+}
+
+enum Categoria {
+  health
+  exercise
+  work 
+
+}
+
+model Address {
+   id String @id @default(uuid())
+   street String
+   city String
+   state String @db.VarChar(2)
+   postalCode String @db.VarChar(8)
+   number Int
+   user_id String @unique
+
+   user User @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate:Cascade)
+
+   @@map("addresses")
+   
+}
