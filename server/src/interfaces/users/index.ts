@@ -11,7 +11,7 @@ export interface IUser {
     name: string
     email: string
     datebirth: String
-    password: String
+    password?: String
     isAdm: boolean
     created_at: Date
     updated_at: Date
