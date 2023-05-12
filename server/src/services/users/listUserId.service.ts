@@ -1,6 +1,8 @@
+import { AppError } from "../../errors/appError";
+import { IUser } from "../../interfaces/users";
 import { prisma } from "../../lib/prisma";
 
-export const listUserIdService = async (id: string) => {
+export const listUserIdService = async (id: string):Promise<IUser> => {
   const user = await prisma.user.findUnique({
     where: {
       id: id,
@@ -16,6 +18,10 @@ export const listUserIdService = async (id: string) => {
       updated_at: true,
     },
   });
+
+  if (!user) {
+    throw new AppError("Wrong email/password", 403);
+  }
 
   return user;
 };
