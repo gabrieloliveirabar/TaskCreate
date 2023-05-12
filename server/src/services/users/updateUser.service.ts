@@ -1,10 +1,10 @@
-import { IUserUpdate } from "../../interfaces/users";
+import { IUser, IUserUpdate } from "../../interfaces/users";
 import { prisma } from "../../lib/prisma";
 
 export const updateUserService = async (
   id: string,
   { name, datebirth, cpf, email, password }: IUserUpdate
-) => {
+): Promise<IUser> => {
   const updateUser = await prisma.user.update({
     where: {
       id: id,

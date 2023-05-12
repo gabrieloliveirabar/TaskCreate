@@ -8,6 +8,7 @@ export interface IUserRequest {
 
 export interface IUser {
     id: string
+    cpf?:string
     name: string
     email: string
     datebirth: String
