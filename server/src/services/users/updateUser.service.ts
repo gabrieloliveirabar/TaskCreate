@@ -1,4 +1,4 @@
-import { IUser, IUserUpdate } from "../../interfaces/users";
+import { IUser, IUserUpdate } from "../../interfaces/user";
 import { prisma } from "../../lib/prisma";
 
 export const updateUserService = async (

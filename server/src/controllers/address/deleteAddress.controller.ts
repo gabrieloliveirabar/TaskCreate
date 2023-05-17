@@ -5,5 +5,5 @@ export const deleteAddressController = async (req: Request, res: Response) => {
   const idParams = req.params.id;
 
   const deleteAddress = await deleteAddressService(idParams);
-  return res.status(204).json(deleteAddress);
+  return res.status(204).json({message: "address deleted"});
 };

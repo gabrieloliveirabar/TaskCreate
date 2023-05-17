@@ -1,5 +1,5 @@
 import { prisma } from "../../lib/prisma";
-import { IUser, IUserRequest } from "../../interfaces/users";
+import { IUser, IUserRequest } from "../../interfaces/user";
 
 import { z } from "zod";
 
