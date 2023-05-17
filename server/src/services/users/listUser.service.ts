@@ -1,8 +1,8 @@
 import { User } from "@prisma/client";
 import { prisma } from "../../lib/prisma";
-import { IUser } from "../../interfaces/users";
+import { IUser } from "../../interfaces/user";
 
-export const listUserService = async ():Promise<IUser[]> => {
+export const listUserService = async (): Promise<IUser[]> => {
   const users = await prisma.user.findMany({
     select: {
       id: true,

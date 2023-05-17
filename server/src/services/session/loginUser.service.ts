@@ -1,4 +1,4 @@
-import { IUserLogin } from "../../interfaces/users";
+import { IUserLogin } from "../../interfaces/user";
 import { prisma } from "../../lib/prisma";
 
 import bcrypt from "bcrypt";
