@@ -32,4 +32,4 @@ http://127.0.0.1:3333/
 [ Voltar  para o topo ](#tabela-de-conteúdos)
 
 Diagrama ER da API definindo bem as relações entre as tabelas do banco de dados.
-![DER](
+![DER]
