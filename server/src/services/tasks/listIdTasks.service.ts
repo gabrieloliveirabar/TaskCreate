@@ -3,7 +3,7 @@ import { ITask } from "../../interfaces/task";
 import { prisma } from "../../lib/prisma";
 
 export const listIdTasksService = async (idParams: string): Promise<ITask> => {
-  const tasks = await prisma.task.findUnique({
+  const tasks = await prisma.task.findFirst({
     where: {
       id: idParams,
     },
