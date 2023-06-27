@@ -1,0 +1,63 @@
+:root {
+    font-family: Roboto, Avenir, Helvetica, Arial, sans-serif;
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #1C89C7  
+  }
+  
+  a {
+    font-weight: 500;
+    color: #ffff;
+    text-decoration: inherit;
+  }
+  
+  
+  body {
+    margin: 0;
+    display: flex;
+    place-items: center;
+    min-width: 320px;
+    min-height: 100vh;
+  }
+  
+  h1 {
+    
+    color: #FFFF;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 50px;
+  }
+  
+  button {
+    border-radius: 5px;
+    border: 1px solid transparent;
+    padding: 0.6em 1.2em;
+
+    
+    font-weight: 500;
+    font-family: inherit;
+
+    background-color: '#23ABFA';
+    cursor: pointer;
+    transition: border-color 0.25s;
+    text-align: center
+  }
+  button:hover {
+    border-color: #ffff;
+  }
+  button:focus,
+  button:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+  }
+  
+  @media (prefers-color-scheme: light) {
+    :root {
+      color: #213547;
+      background-color: #ffffff;
+    }
+    a:hover {
+      color:#ffff;
+    }
+    
+  }
+  
