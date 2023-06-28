@@ -1,24 +1,28 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./src/**/*.{html,js}"],
+  content: ["./src/**/*.tsx", "./index.html"],
   theme: {
     extend: {
+      screens: {
+        tablet:'500px',
+      },
       colors: {
-        background: '#1C89C7',
-        button_background: '#23ABFA',
-        button_background_red:'#FA2323',
-        header_background: '#11547A',
-        input_background: '#11547A',
-        h1:'#ffff',
-       
+        background: "#1C89C7",
+        button_background: "#23ABFA",
+        button_background_red: "#FA2323",
+        header_background: "#11547A",
+        input_background: "#11547A",
+        h1: {
+          color: "#ffffff",
+        },
+        spacing: {
+          "5px": "5px",
+        },
       },
       fontFamily: {
-        
-        sans: ["Inter", "Arial", "sans-serif"]
+        sans: ["Roboto", "Arial", "sans-serif"],
       },
-      fontStyle:['hover', focus]
     },
   },
   plugins: [],
-}
-
+};
