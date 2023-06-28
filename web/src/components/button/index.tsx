@@ -8,7 +8,7 @@ export interface IButton {
 
 export const Button = ({children}:IButton) => {
   return (
-    <button type="submit" className="p-3 w-60 text-xl bg-button_background font-medium ">
+    <button type="submit" className="p-3 w-60 text-xl bg-button_background font-medium  ">
       {children}
     </button>
   );

@@ -8,7 +8,7 @@ export const Header = () => {
     setDisplay(!display);
   };
   return (
-    <div className="w-screen  flex p-3  m-0 bg-header_background">
+    <div className="w-screen h-9 flex p-3  m-0 bg-header_background">
       <nav className="w-screen flex justify-between items-center p-[5px] rounded-b-lg">
         <figure className="">
           <img src={logo} alt="Logo" />
