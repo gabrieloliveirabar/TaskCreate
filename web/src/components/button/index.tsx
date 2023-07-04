@@ -2,13 +2,15 @@ import {  ReactNode} from "react";
 
 
 export interface IButton {
-    children: ReactNode;
+  children: ReactNode;
+  width: string
+  lgWidth: string
     
   }
 
-export const Button = ({children}:IButton) => {
+export const Button = ({ children, width, lgWidth }: IButton) => {
   return (
-    <button type="submit" className="p-3 w-60 text-xl bg-button_background font-medium  ">
+    <button type="submit" className={`p-2 w-${width} mt-3 text-xl bg-button_background font-medium lg:w-${lgWidth}`  }>
       {children}
     </button>
   );
