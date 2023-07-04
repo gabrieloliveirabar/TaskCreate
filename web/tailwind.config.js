@@ -1,10 +1,10 @@
-/** @type {import('tailwindcss').Config} */
+/*** @type {import('tailwindcss').Config} */
 export default {
   content: ["./src/**/*.tsx", "./index.html"],
   theme: {
     extend: {
       screens: {
-        tablet:'500px',
+        'tablet': '768px',
       },
       colors: {
         background: "#1C89C7",
@@ -22,6 +22,7 @@ export default {
       fontFamily: {
         sans: ["Roboto", "Arial", "sans-serif"],
       },
+      
     },
   },
   plugins: [],
