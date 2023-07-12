@@ -7,11 +7,18 @@ import { Header } from "../../components/Header";
 import { Input } from "../../components/Input";
 import { UserContext } from "../../context/UserContext";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
   const { loginUserApi } = useContext(UserContext);
-  const onSubmitFuunction = (data: object) => {
-    loginUserApi(data);
+  const navigate = useNavigate();
+
+  const onSubmitFuunction = async (data: object) => {
+    const res = await loginUserApi(data);
+
+    if (res === 200) {
+      navigate("/dashboard");
+    }
   };
   return (
     <div>
@@ -19,7 +26,12 @@ export const Login = () => {
         <BackgroundGuaxinim />
         <div className="relative">
           <div className="h-screen z-10 flex flex-col">
-            <Header />
+            <Header
+              arrayLinks={[
+                { name: "Inicio", redirectTo: "/" },
+                { name: "Cadastro", redirectTo: "/register" },
+              ]}
+            />
             <div className="w-screen h-screen flex flex-col justify-center items-center tablet:flex-row tablet:justify-around ">
               <Form onSubmit={onSubmitFuunction}>
                 {({ register, errors }) => (

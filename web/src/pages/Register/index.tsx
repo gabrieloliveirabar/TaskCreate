@@ -10,16 +10,15 @@ import { ButtonAction } from "../../components/Buttons/ButtonAction";
 import { useNavigate } from "react-router-dom";
 
 export const Register = () => {
-  const { registerUserApi, status } = useContext(UserContext);
+  const { registerUserApi } = useContext(UserContext);
   const navigate = useNavigate();
 
-  const onSubmitFunction = (data: object) => {
-    registerUserApi(data);
+  const onSubmitFunction = async (data: object) => {
+    const res = await registerUserApi(data);
+    if (res === 201) {
+      navigate("/login");
+    }
   };
-
-  if (status === 201) {
-    navigate("/login");
-  }
 
   return (
     <div>
@@ -27,7 +26,12 @@ export const Register = () => {
         <BackgroundGuaxinim />
         <div className="relative">
           <div className="h-screen z-10 flex flex-col  ">
-            <Header />
+            <Header
+              arrayLinks={[
+                { name: "Inicio", redirectTo: "/" },
+                { name: "Login", redirectTo: "/login" },
+              ]}
+            />
             <div className="w-screen h-screen flex flex-col justify-center items-center tablet:flex-row tablet:justify-around ">
               <Form onSubmit={onSubmitFunction}>
                 {({ register, errors }) => (
