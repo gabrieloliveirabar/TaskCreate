@@ -1,8 +1,10 @@
 import logo from "../../assets/logo.svg";
 import { TfiMenu } from "react-icons/tfi";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 export const Header = () => {
   const [display, setDisplay] = useState(false);
+  const navigate = useNavigate();
 
   const HandleMenuClick = () => {
     setDisplay(!display);
@@ -11,7 +13,7 @@ export const Header = () => {
     <div className="w-screen h-9 flex p-3  m-0 bg-header_background">
       <nav className="w-screen flex justify-between items-center p-[5px] rounded-b-lg">
         <figure className="">
-          <img src={logo} alt="Logo" />
+          <img src={logo} alt="Logo" onClick={() => navigate("/")}  className="cursor-pointer"/>
         </figure>
         <label
           htmlFor="toggle"
@@ -24,8 +26,22 @@ export const Header = () => {
           className={`max-sm:w-fullw ${display ? "block" : "hidden"} md:block`}
         >
           <ul onClick={HandleMenuClick} className=" flex gap-2">
-            <li><a href="" className="p-0 text-base font-medium text-white border border-transparent no-underline hover:border-y-white">Login</a></li>
-            <li className=""><a href="" className="p-0 text-base font-medium text-white border border-transparent no-underline hover:border-y-white">Register</a></li>
+            <li>
+              <a
+                href="/login"
+                className="p-0 text-base font-medium text-white border border-transparent no-underline hover:border-y-white"
+              >
+                login
+              </a>
+            </li>
+            <li className="">
+              <a
+                href="/register"
+                className="p-0 text-base font-medium text-white border border-transparent no-underline hover:border-y-white"
+              >
+                cadastro
+              </a>
+            </li>
           </ul>
         </div>
       </nav>

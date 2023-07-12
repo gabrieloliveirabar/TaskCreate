@@ -1,10 +1,10 @@
 import { ReactNode } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import { Button } from "../Button";
+import { IApiLogin } from "../../services/apiLogin";
 
 interface IForm {
   children: (props: { register: any; errors: any }) => ReactNode;
-  onSubmit: SubmitHandler<FieldValues>;
+  onSubmit: (data:object)=>void;
 }
 
 export const Form = ({ children, onSubmit }: IForm) => {
@@ -23,7 +23,7 @@ export const Form = ({ children, onSubmit }: IForm) => {
       className="flex flex-col justify-center items-center w-56 "
     >
       {children({ register, errors })}
-      <Button width="52" lgWidth="96">Cadastrar</Button>
+     
     </form>
   );
 };

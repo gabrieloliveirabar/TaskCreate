@@ -9,6 +9,6 @@ export interface IApiRegister {
 }
 
 const apiRegister = async (data: IApiRegister) => {
-    await Api.post("/users/", data)
+    return await Api.post("/users", data)
 }
 export default apiRegister

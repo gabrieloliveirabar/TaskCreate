@@ -1,6 +1,10 @@
 node_modules/
 dist/
 yarn.lock
+server/.yarn/
+web/.yarn/cache/@emotion-is-prop-valid-npm-0.8.8-261a0f2426-bb7ec6d48c.zip
+web/.yarn/cache/@emotion-memoize-npm-0.7.4-5648cf11b8-4e3920d4ec.zip
+web/.yarn/cache/framer-motion-npm-10.12.18-1ebaf9f57f-71539be117.zip
 .env
 server/prisma/schema.prisma.
 
