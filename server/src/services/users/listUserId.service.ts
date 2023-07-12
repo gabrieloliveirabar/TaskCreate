@@ -12,7 +12,7 @@ export const listUserIdService = async (id: string): Promise<IUser> => {
       name: true,
       email: true,
       datebirth: true,
-      password: false,
+      password: true,
       isAdm: true,
       created_at: true,
       updated_at: true,
