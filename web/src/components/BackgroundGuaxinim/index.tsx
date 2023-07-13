@@ -1,5 +1,6 @@
 import guaxinim from "../../assets/guaxinim.svg";
 
+
 export const BackgroundGuaxinim = () => {
   return (
     <div
