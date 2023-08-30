@@ -1,26 +1,27 @@
 import { ReactNode } from "react";
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import { IApiLogin } from "../../services/apiLogin";
+import { FieldValues,  useForm } from "react-hook-form";
 
-interface IForm {
+interface IForm<T> {
   children: (props: { register: any; errors: any }) => ReactNode;
-  onSubmit: (data:object)=>void;
+  onSubmit: (data: T) => void;
+  
 }
 
-export const Form = ({ children, onSubmit }: IForm) => {
+
+export const Form =<T extends object> ({ children, onSubmit }: IForm<T>) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FieldValues>({});
+  } = useForm<T>({});
 
-  const handleFormSubmit = (data: object) => {
+  const handleFormSubmit = (data: T) => {
     onSubmit(data);
   };
   return (
     <form
       onSubmit={handleSubmit(handleFormSubmit)}
-      className="flex flex-col justify-center items-center w-56 "
+      className="flex flex-col justify-center items-center w-56 tablet:w-2/3 "
     >
       {children({ register, errors })}
      

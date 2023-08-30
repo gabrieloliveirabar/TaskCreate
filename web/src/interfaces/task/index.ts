@@ -1,12 +1,12 @@
 import { IUser } from "../user";
 
-export interface ITaskRequest {
-  title: string
-  description: string
-  categorie: string
+export interface IApiTaskRegister {
+  title: string;
+  description: string;
+  categorie: string;
 }
 
-export interface ITask extends ITaskRequest {
+export interface ITask extends IApiTaskRegister {
   id: string;
   created_at: Date;
   updated_at?: Date;
@@ -23,5 +23,5 @@ export interface ITaskUpdate {
   description?: string;
   categorie?: string;
   status?: boolean;
-  updated_at?: Date;
+  
 }

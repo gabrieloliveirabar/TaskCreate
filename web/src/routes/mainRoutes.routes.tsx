@@ -11,6 +11,7 @@ interface IPriveteRoute {
 }
 
 const PrivateRoute = ({ children, redirectTo }: IPriveteRoute) => {
+
   const isAuthenticated = localStorage.getItem("@TOKEN") !== null;
 
   return <>{isAuthenticated ? children : <Navigate to={redirectTo} />}</>;
@@ -18,6 +19,7 @@ const PrivateRoute = ({ children, redirectTo }: IPriveteRoute) => {
 
 export const MainRoutes = () => {
   const location = useLocation();
+  
   return (
     <Routes location={location} key={location.pathname}>
       <Route path="/" element={<Home />} />

@@ -2,7 +2,7 @@ import { BackgroundGuaxinim } from "../../components/BackgroundGuaxinim";
 import guaxinim from "../../assets/guaxinim.svg";
 import { Form } from "../../components/Form";
 import { Header } from "../../components/Header";
-import { Input } from "../../components/Input";
+import { Input } from "../../components/Inputs/Input";
 import { UserContext } from "../../context/UserContext";
 import { useContext } from "react";
 import FadeInAnimation from "../../components/Animation/FadeInAnimation";
@@ -72,7 +72,7 @@ export const Register = () => {
                       errors={errors}
                       placeHolder="digite seu aniversário"
                     />
-                    <ButtonAction width="52" lgWidth="96">
+                    <ButtonAction width="52" lgWidth="96" height="" lgHeight="" functionAction={()=>{"ol"}}>
                       Cadastrar
                     </ButtonAction>
                   </>

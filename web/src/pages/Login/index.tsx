@@ -4,7 +4,7 @@ import guaxinim from "../../assets/guaxinim.svg";
 import { ButtonAction } from "../../components/Buttons/ButtonAction";
 import { Form } from "../../components/Form";
 import { Header } from "../../components/Header";
-import { Input } from "../../components/Input";
+import { Input } from "../../components/Inputs/Input";
 import { UserContext } from "../../context/UserContext";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
@@ -13,7 +13,7 @@ export const Login = () => {
   const { loginUserApi } = useContext(UserContext);
   const navigate = useNavigate();
 
-  const onSubmitFuunction = async (data: object) => {
+  const onSubmitFunction = async (data: object) => {
     const res = await loginUserApi(data);
 
     if (res === 200) {
@@ -33,7 +33,7 @@ export const Login = () => {
               ]}
             />
             <div className="w-screen h-screen flex flex-col justify-center items-center tablet:flex-row tablet:justify-around ">
-              <Form onSubmit={onSubmitFuunction}>
+              <Form onSubmit={onSubmitFunction}>
                 {({ register, errors }) => (
                   <>
                     <h1 className="w-full text-center font-bold">Login</h1>
@@ -51,7 +51,7 @@ export const Login = () => {
                       errors={errors}
                       placeHolder="digite sua senha"
                     />
-                    <ButtonAction width="52" lgWidth="96">
+                    <ButtonAction width="52" lgWidth="96" height="" lgHeight="" functionAction={onSubmitFunction}>
                       Login
                     </ButtonAction>
                   </>

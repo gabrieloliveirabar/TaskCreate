@@ -1,3 +1,6 @@
+import { IAddress } from "../address"
+import { ITask } from "../task"
+
 export interface IUserRequest {
     name: string
     datebirth: string
@@ -16,6 +19,9 @@ export interface IUser {
     isAdm: boolean
     created_at: Date
     updated_at: Date
+    adress: IAddress
+    tasks: ITask[]
+
 }
 
 

@@ -15,6 +15,13 @@ export const Header = ({ arrayLinks }: IHeader) => {
   const [display, setDisplay] = useState(false);
   const navigate = useNavigate();
 
+  const clearStorageFunction = (name: string) => {
+  
+    if (name === "Sair") {
+      window.localStorage.clear();
+    }
+  };
+
   const HandleMenuClick = () => {
     setDisplay(!display);
   };
@@ -45,6 +52,7 @@ export const Header = ({ arrayLinks }: IHeader) => {
                 <a
                   href={elem.redirectTo}
                   className="p-0 text-base font-medium text-white border border-transparent no-underline hover:border-y-white"
+                  onClick={() => clearStorageFunction(elem.name)}
                 >
                   {elem.name}
                 </a>

@@ -6,39 +6,39 @@ import {
   Dispatch,
   SetStateAction,
 } from "react";
-import apiRegister from "../services/apiRegister";
-import apiLogin from "../services/apiLogin";
+import apiUserRegister from "../services/users/apiUserRegister";
+import apiLogin, { IApiLogin } from "../services/session/apiLogin";
 import jwtDecode from "jwt-decode";
 import api from "../services/api";
+import { IUser } from "../interfaces/user";
 
 interface IUserProvider {
   children: ReactNode;
 }
 export interface IUserContext {
-  userObject: object;
+  userObject: IUser;
   registerUserApi: (data: object) => Promise<number>;
-  loginUserApi: (data: object) => Promise<number>;
+  loginUserApi: (data: IApiLogin) => Promise<number>;
   setIsLogged: Dispatch<SetStateAction<boolean>>;
 }
 
 export const UserContext = createContext<IUserContext>({} as IUserContext);
 
 export const UserProvider = ({ children }: IUserProvider) => {
-  const [userObject, setUserObject] = useState<object>({});
+  const [userObject, setUserObject] = useState<IUser>({} as IUser);
   const [isLogged, setIsLogged] = useState<boolean>(false);
-  console.log(userObject)
-  const registerUserApi = async (data: object) => {
-    const res = await apiRegister(data);
+  const registerUserApi = async (data: object): Promise<number> => {
+    const res = await apiUserRegister(data);
 
     return res.status;
   };
 
-  const loginUserApi = async (data: object) => {
-    const res = await apiLogin(data);
-    console.log(res.data.token);
+  const loginUserApi = async (data: IApiLogin) => {
+    
+    
+    const res = await apiLogin(data)
     window.localStorage.clear();
     window.localStorage.setItem("@TOKEN", res.data.token);
-
     const token = localStorage.getItem("@TOKEN");
 
     const decoded = jwtDecode(token!);

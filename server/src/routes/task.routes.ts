@@ -5,10 +5,12 @@ import { listTasksController } from "../controllers/tasks/listTasks.controller";
 import { listIdTasksController } from "../controllers/tasks/listIdTasks.conntroller";
 import { updateTasksController } from "../controllers/tasks/updateTasks.controller";
 import { deleteTasksController } from "../controllers/tasks/deleteTasks.controller";
+import { listPageTaskUserController } from "../controllers/tasks/listPageTaskUser.controller";
 
 export const taskRouter = Router();
 taskRouter.post("", verifyAuthUserMiddleware, createTaskController);
 taskRouter.get("", verifyAuthUserMiddleware, listTasksController);
-taskRouter.get("/:id", verifyAuthUserMiddleware, listIdTasksController);
+// taskRouter.get("/:id", verifyAuthUserMiddleware, listIdTasksController);
+taskRouter.get("/:page", verifyAuthUserMiddleware, listPageTaskUserController);
 taskRouter.patch("/:id", verifyAuthUserMiddleware, updateTasksController);
 taskRouter.delete("/:id", verifyAuthUserMiddleware, deleteTasksController);
