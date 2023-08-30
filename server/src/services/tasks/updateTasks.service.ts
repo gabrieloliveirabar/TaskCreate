@@ -12,14 +12,19 @@ export const updateTasksService = async (
     categorie === "work" ||
     categorie === undefined
   ) {
+    const task = await prisma.task.findFirst({
+      where: {
+        id: idParams,
+      },
+    });
     let updateTask = await prisma.task.update({
       where: {
         id: idParams,
       },
       data: {
         categorie: categorie,
-        description: description,
-        title: title,
+        description: description === "" ? task?.description : description,
+        title: title === "" ? task?.title : title,
         status: status,
       },
     });

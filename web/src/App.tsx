@@ -3,14 +3,17 @@ import "./App.css";
 import "./styles/global.css";
 import { MainRoutes } from "./routes/mainRoutes.routes";
 import { UserProvider } from "./context/UserContext";
+import { TaskProvider } from "./context/TaskContext";
 
 function App() {
   return (
     <div className="h-screen">
       <UserProvider>
-        <Router>
-          <MainRoutes />
-        </Router>
+        <TaskProvider>
+          <Router>
+            <MainRoutes />
+          </Router>
+        </TaskProvider>
       </UserProvider>
     </div>
   );

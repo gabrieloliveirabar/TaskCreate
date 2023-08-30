@@ -18,7 +18,6 @@ export const createTaskService = async (
   }
 
   const taskAlreadyexist = await prisma.task.findFirst({
-    
     where: {
       title: title,
       description: description,
@@ -31,7 +30,7 @@ export const createTaskService = async (
 
   if (
     categorie === "health" ||
-    categorie == "exercise" ||
+    categorie === "exercise" ||
     categorie === "work"
   ) {
     let task = await prisma.task.create({

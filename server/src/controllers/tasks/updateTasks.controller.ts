@@ -5,7 +5,7 @@ import { updateTasksService } from "../../services/tasks/updateTasks.service";
 export const updateTasksController = async (req: Request, res: Response) => {
   const idParams = req.params.id;
   const { title, description, categorie, status }: ITaskUpdate = req.body;
-
+  
   const updateTask = await updateTasksService(idParams, {
     title,
     description,

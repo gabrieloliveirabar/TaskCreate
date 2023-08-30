@@ -17,7 +17,10 @@ export const Home = () => {
   return (
     <FadeInAnimation>
       <div className="h-screen">
-        <Header />
+        <Header  arrayLinks={[
+                { name: "Login", redirectTo: "/login" },
+                { name: "Cadastro", redirectTo: "/register" },
+              ]} />
         <div className="flex-col justify-center items-center h-5/6 w-screen p-3  ">
           <div className="  h-4/5 md:flex md:justify-center md:items-center">
             <div className="flex w-full">
