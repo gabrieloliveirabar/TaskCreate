@@ -1,11 +1,10 @@
 import Api from "../api";
 
 export interface IApiUserRegister {
-  name?: string;
-  email?: string;
-  password?: string;
-  dateBirth?: string;
-  cpf?: string;
+  name: string;
+  email: string;
+  password: string;
+  dateBirth: string;
 }
 
 const apiUserRegister = async (data: IApiUserRegister) => {

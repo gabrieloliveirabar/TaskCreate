@@ -4,6 +4,7 @@ import { Register } from "../pages/Register";
 import { Login } from "../pages/Login";
 import { ReactNode } from "react";
 import { Dashboard } from "../pages/Dashboard";
+import { Profile } from "../pages/Profile";
 
 interface IPriveteRoute {
   children: ReactNode;
@@ -11,7 +12,6 @@ interface IPriveteRoute {
 }
 
 const PrivateRoute = ({ children, redirectTo }: IPriveteRoute) => {
-
   const isAuthenticated = localStorage.getItem("@TOKEN") !== null;
 
   return <>{isAuthenticated ? children : <Navigate to={redirectTo} />}</>;
@@ -19,7 +19,7 @@ const PrivateRoute = ({ children, redirectTo }: IPriveteRoute) => {
 
 export const MainRoutes = () => {
   const location = useLocation();
-  
+
   return (
     <Routes location={location} key={location.pathname}>
       <Route path="/" element={<Home />} />
@@ -31,6 +31,14 @@ export const MainRoutes = () => {
         element={
           <PrivateRoute redirectTo="/">
             <Dashboard />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/profile"
+        element={
+          <PrivateRoute redirectTo="/">
+            <Profile />
           </PrivateRoute>
         }
       />

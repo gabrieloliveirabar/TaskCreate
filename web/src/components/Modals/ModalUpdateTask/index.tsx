@@ -7,7 +7,6 @@ import { OptionSelectTag } from "../../Inputs/SelectTagModal/option";
 import { TextArea } from "../../Inputs/TextArea/indes";
 import { toastError, toastSuccess } from "../../ToastConfig";
 import { ITaskUpdate } from "../../../interfaces/task";
-import { TaskContext } from "../../../context/TaskContext";
 
 export interface IObjectTask {
   title: string;
@@ -30,18 +29,16 @@ export const ModalUpdateTask = ({
   setDisplayModalUpdateOrDelete,
 }: IModalUpdateTask) => {
   const onSubmitFunction = async (data: any) => {
-    
-    
     const res = await functionApi(data, idTask);
-   
-    if (res === 200) {
-      setState(false);
-      toastSuccess("Tarefa atualizada");
-      setDisplayModalUpdateOrDelete(false);
-    }
+
+    res === 200
+      ? (setState(false),
+        toastSuccess("Tarefa atualizada"),
+        setDisplayModalUpdateOrDelete(false))
+      : toastError("Erro na atualização");
   };
   return (
-    <ModalBase title="Create Task" isOpen={true} setIs={setState}>
+    <ModalBase title="Criação de Task" isOpen={true} setIs={setState}>
       <div
         className=" w-full h-72 bg-sky-900 flex justify-start items-start  rounded tablet:justify-center
       "

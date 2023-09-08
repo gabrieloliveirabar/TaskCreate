@@ -1,0 +1,22 @@
+.icon-active {
+  color: rgb(3, 105, 161); /* Cor quando ativo */
+}
+
+.icon-inactive {
+  color: #000; /* Cor quando inativo */
+}
+
+/* Se você estiver usando SCSS */
+.icon-active {
+  color: rgb(3, 105, 161); /* Cor quando ativo */
+}
+
+.icon-inactive {
+  color: #000; /* Cor quando inativo */
+}
+Isso deve permitir que você controle facilmente a cor do ícone quando estiver ativo e inativo, evitando conflitos de estilos que podem ocorrer ao definir a cor diretamente no estilo do componente React. Certifique-se de ajustar as cores e estilos de acordo com suas preferências.
+
+
+
+
+

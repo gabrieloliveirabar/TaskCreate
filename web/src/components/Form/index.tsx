@@ -21,7 +21,7 @@ export const Form =<T extends object> ({ children, onSubmit }: IForm<T>) => {
   return (
     <form
       onSubmit={handleSubmit(handleFormSubmit)}
-      className="flex flex-col justify-center items-center w-56 tablet:w-2/3 "
+      className="flex flex-col justify-center items-center w-56 tablet:w-2/3  "
     >
       {children({ register, errors })}
      

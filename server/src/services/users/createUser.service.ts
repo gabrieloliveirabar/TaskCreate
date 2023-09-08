@@ -7,23 +7,22 @@ import { AppError } from "../../errors/appError";
 export const createUserService = async ({
   name,
   datebirth,
-  cpf,
   email,
   password,
 }: IUserRequest): Promise<IUser> => {
   const createUserBody = z.object({
     name: z.string(),
     datebirth: z.string(),
-    cpf: z.string(),
     email: z.string(),
     password: z.string(),
   });
-  createUserBody.parse({ name, datebirth, cpf, email, password });
+  createUserBody.parse({ name, datebirth, email, password });
 
   const emailExist = prisma.user.findFirst({
     where: {
-    email: String(email)
-  }})
+      email: String(email),
+    },
+  });
 
   if (await emailExist) {
     throw new AppError("Email already registered.", 403);
@@ -33,7 +32,6 @@ export const createUserService = async ({
     data: {
       name: String(name),
       datebirth: String(datebirth),
-      cpf: String(cpf),
       email: String(email),
       password: String(password),
     },

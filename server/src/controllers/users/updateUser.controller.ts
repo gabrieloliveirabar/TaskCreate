@@ -3,13 +3,12 @@ import { IUserUpdate } from "../../interfaces/user";
 import { updateUserService } from "../../services/users/updateUser.service";
 
 export const updateUserController = async (req: Request, res: Response) => {
-  const { name, datebirth, cpf, email, password } = req.body;
+  const { name, datebirth,  email, password } = req.body;
   const id = req.params.id;
 
   const updateUser = await updateUserService(id, {
     name,
     datebirth,
-    cpf,
     email,
     password,
   });
