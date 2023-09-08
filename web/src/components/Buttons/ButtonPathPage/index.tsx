@@ -21,7 +21,7 @@ export const ButtonPathPage = ({
   return (
     <button
       type="submit"
-      className={`p-2 w-${width} mt-3 text-xl bg-button_background font-medium lg:w-${lgWidth}`}
+      className={`p-1 w-${width} h-8 mt-3 text-lg  tablet:text-2xl text-center  flex justify-center items-center border-hidden bg-button_background font-medium hover:outline-white focus:outline-white lg:w-${lgWidth}`}
       onClick={handleClick}
     >
       {children}

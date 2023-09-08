@@ -26,6 +26,7 @@ export const updateTasksService = async (
         description: description === "" ? task?.description : description,
         title: title === "" ? task?.title : title,
         status: status,
+        
       },
     });
     if (!updateTask) {

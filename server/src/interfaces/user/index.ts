@@ -1,14 +1,12 @@
 export interface IUserRequest {
     name: String
     datebirth: String
-    cpf:String
     email:String
     password:String
 }
 
 export interface IUser {
     id: string
-    cpf?:string
     name: string
     email: string
     datebirth: String
@@ -27,7 +25,6 @@ export interface IUserLogin {
 export interface IUserUpdate {
     name?: String
     datebirth?: String
-    cpf?:String
     email?:String
     password?:String
     

@@ -12,7 +12,7 @@ export const createAddressService = async (
     city: z.string(),
     state: z.string(),
     postalCode: z.string(),
-    number: z.number(),
+    number: z.string(),
   });
 
   createAdressBody.parse({ street, city, state, postalCode, number });
@@ -20,7 +20,7 @@ export const createAddressService = async (
   const addresses = await prisma.address.findFirst({
     where: {
       postalCode: postalCode,
-      number: number,
+      number: Number(number),
     },
   });
 
@@ -34,7 +34,7 @@ export const createAddressService = async (
       city: String(city),
       state: String(state),
       postalCode: String(postalCode),
-      number: number,
+      number: Number(number),
       user_id: userId,
     },
   });

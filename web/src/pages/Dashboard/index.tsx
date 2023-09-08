@@ -12,10 +12,11 @@ import { Task } from "../../components/Task";
 import { motion } from "framer-motion";
 
 import { ModalCreateTask } from "../../components/Modals/ModalCreateTask";
-import { redirect } from "react-router-dom";
+import { useNavigate, redirect } from "react-router-dom";
 
 export const Dashboard = () => {
   const { userObject } = useContext(UserContext);
+  const navigate = useNavigate();
   const {
     handleNextPage,
     handlePrevPage,
@@ -26,11 +27,8 @@ export const Dashboard = () => {
     setFilter,
   } = useContext(TaskContext);
   const [upImage, setUpImage] = useState<boolean>(false);
-  const userAdressObject = userObject.adress || null;
-  
-  
- 
-  
+  const userAdressObject = userObject.address || null;
+
   return (
     <div>
       <FadeInAnimation>
@@ -50,7 +48,12 @@ export const Dashboard = () => {
                     <p className="font-sans text-xl w-full text-left tablet:text-4xl ">
                       Você ainda não terminou seu cadastro, para completar,
                       acesse o seu{" "}
-                      <button className="text-sky-800 border-0 p-0 m-0 hover:outline-none hover:scale-110 focus:outline-none">
+                      <button
+                        className="text-sky-800 border-0 p-0 m-0 hover:outline-none hover:scale-110 focus:outline-none"
+                        onClick={() => {
+                          navigate("/profile");
+                        }}
+                      >
                         Perfil
                       </button>{" "}
                       e informe seu endereço.
@@ -73,7 +76,7 @@ export const Dashboard = () => {
                                 height="full"
                                 lgHeight="3"
                                 functionAction={() => {
-                                 setFilter(" ");
+                                  setFilter(" ");
                                 }}
                               >
                                 todos
@@ -168,9 +171,9 @@ export const Dashboard = () => {
                           >
                             próximo
                           </ButtonAction>
-                          <ToastContainer />
                         </div>
                       </div>
+                      <ToastContainer />
                     </div>
                   </div>
                 ) : (

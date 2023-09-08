@@ -4,7 +4,9 @@ import { createAddressService } from "../../services/address/createAddress.servi
 
 export const createAddressController = async (req: Request, res: Response) => {
   const { street, city, state, postalCode, number }: IAddressRequest = req.body;
+ 
   const userId = req.user.id;
+
 
   const address = await createAddressService(
     { street, city, state, postalCode, number },

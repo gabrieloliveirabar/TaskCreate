@@ -6,7 +6,7 @@ import {
   Dispatch,
   SetStateAction,
 } from "react";
-import apiUserRegister from "../services/users/apiUserRegister";
+import apiUserRegister, { IApiUserRegister } from "../services/users/apiUserRegister";
 import apiLogin, { IApiLogin } from "../services/session/apiLogin";
 import jwtDecode from "jwt-decode";
 import api from "../services/api";
@@ -17,7 +17,7 @@ interface IUserProvider {
 }
 export interface IUserContext {
   userObject: IUser;
-  registerUserApi: (data: object) => Promise<number>;
+  registerUserApi: (data: IApiUserRegister) => Promise<number>;
   loginUserApi: (data: IApiLogin) => Promise<number>;
   setIsLogged: Dispatch<SetStateAction<boolean>>;
 }
@@ -27,7 +27,7 @@ export const UserContext = createContext<IUserContext>({} as IUserContext);
 export const UserProvider = ({ children }: IUserProvider) => {
   const [userObject, setUserObject] = useState<IUser>({} as IUser);
   const [isLogged, setIsLogged] = useState<boolean>(false);
-  const registerUserApi = async (data: object): Promise<number> => {
+  const registerUserApi = async (data: IApiUserRegister): Promise<number> => {
     const res = await apiUserRegister(data);
 
     return res.status;

@@ -16,5 +16,4 @@ export interface IAddressUpdate {
   state?: string;
   postalCode?: string;
   number?: number;
- 
 }

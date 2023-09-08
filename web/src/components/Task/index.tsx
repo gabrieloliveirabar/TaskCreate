@@ -72,7 +72,7 @@ export const Task = ({
               <GrAppsRounded />
             </div>
           </div>
-          <p className={`w-1/4 text-lg  text-center font-medium p-0   tablet:text-xl `} >
+          <p className={`w-1/4 text-lg  text-center font-medium p-0   tablet:text-xl line-clamp-1`} >
             {title}
           </p>
           <p className={`w-1/4 text-lg   text-center font-medium p-0  tablet:tablet:text-xl `}>

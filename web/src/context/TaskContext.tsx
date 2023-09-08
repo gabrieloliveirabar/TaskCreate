@@ -48,7 +48,6 @@ export const TaskProvider = ({ children }: ITaskProvider) => {
   const registerTaskApi = async (data: IApiTaskRegister): Promise<number> => {
     const res = await apiTaskRegister(data);
 
-    notify(res!, "Tarefa criada com sucesso!", "Erro ao criar a tarefa!");
     return res!;
   };
   const apiUpdateTask = async (data: any, id: string) => {
@@ -82,18 +81,14 @@ export const TaskProvider = ({ children }: ITaskProvider) => {
         const page = String(currentPage);
         try {
           const { data } = await api.get(`tasks/${page}?filter=${filter}`);
-          if (data.length === 0 && filter !== " ") {
-            toastError("ainda não há tarefas");
-          } else {
-            setTasks(data);
-          }
+          setTasks(data);
         } catch (err) {
           console.log(err);
         }
       }
     };
     fechTask();
-  }, [currentPage, filter, tasks.length]);
+  }, [currentPage, filter, tasks]);
 
   const typeCategorie = (categorie: string) => {
     let typeCateg = "";

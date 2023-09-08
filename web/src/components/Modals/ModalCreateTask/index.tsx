@@ -7,6 +7,7 @@ import { SelectTagModal } from "../../Inputs/SelectTagModal";
 import { OptionSelectTag } from "../../Inputs/SelectTagModal/option";
 import { IApiTaskRegister } from "../../../interfaces/task";
 import { TextArea } from "../../Inputs/TextArea/indes";
+import { toastError, toastSuccess } from "../../ToastConfig";
 
 export const ModalCreateTask = () => {
   const { setCreateTaskModal, registerTaskApi } = useContext(TaskContext);
@@ -14,9 +15,9 @@ export const ModalCreateTask = () => {
   const onSubmitFunction = async (data: IApiTaskRegister) => {
     const res = await registerTaskApi(data);
 
-    if (res === 201) {
-      setCreateTaskModal(false)
-    }
+    res === 201
+      ? (setCreateTaskModal(false), toastSuccess("tarefa criada com sucesso"))
+      : toastError("ERRO ao criar a tarefa");
   };
   return (
     <ModalBase title="Create Task" isOpen={true} setIs={setCreateTaskModal}>

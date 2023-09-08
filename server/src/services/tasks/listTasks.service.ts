@@ -15,7 +15,6 @@ export const listTasksService = async (): Promise<any> => {
         select: {
           id: true,
           name: true,
-          cpf: true,
           email: true,
         },
       },

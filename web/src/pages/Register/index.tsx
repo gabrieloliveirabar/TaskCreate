@@ -8,12 +8,13 @@ import { useContext } from "react";
 import FadeInAnimation from "../../components/Animation/FadeInAnimation";
 import { ButtonAction } from "../../components/Buttons/ButtonAction";
 import { useNavigate } from "react-router-dom";
+import { IApiUserRegister } from "../../services/users/apiUserRegister";
 
 export const Register = () => {
   const { registerUserApi } = useContext(UserContext);
   const navigate = useNavigate();
 
-  const onSubmitFunction = async (data: object) => {
+  const onSubmitFunction = async (data: IApiUserRegister) => {
     const res = await registerUserApi(data);
     if (res === 201) {
       navigate("/login");
@@ -58,13 +59,7 @@ export const Register = () => {
                       errors={errors}
                       placeHolder="digite sua senha"
                     />
-                    <Input
-                      label="CPF"
-                      name="cpf"
-                      register={register}
-                      errors={errors}
-                      placeHolder="000-000-000-00"
-                    />
+
                     <Input
                       label="Data de nascimento"
                       name="datebirth"
@@ -72,7 +67,15 @@ export const Register = () => {
                       errors={errors}
                       placeHolder="digite seu aniversário"
                     />
-                    <ButtonAction width="52" lgWidth="96" height="" lgHeight="" functionAction={()=>{"ol"}}>
+                    <ButtonAction
+                      width="52"
+                      lgWidth="96"
+                      height=""
+                      lgHeight=""
+                      functionAction={() => {
+                        "ol";
+                      }}
+                    >
                       Cadastrar
                     </ButtonAction>
                   </>

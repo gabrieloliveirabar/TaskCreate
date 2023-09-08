@@ -5,6 +5,8 @@ const FadeInAnimation = ({ children }:any) => (
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     transition={{ duration: 1 }}
+
+    className="w-screen h-screen"
   >
     {children}
   </motion.div>
