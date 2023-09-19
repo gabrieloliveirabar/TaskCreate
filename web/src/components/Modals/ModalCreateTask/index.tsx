@@ -16,7 +16,7 @@ export const ModalCreateTask = () => {
     const res = await registerTaskApi(data);
 
     res === 201
-      ? (setCreateTaskModal(false), toastSuccess("tarefa criada com sucesso"))
+      ? (setCreateTaskModal(false), toastSuccess("Tarefa criada com sucesso"))
       : toastError("ERRO ao criar a tarefa");
   };
   return (

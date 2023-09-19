@@ -3,7 +3,7 @@ import { prisma } from "../../lib/prisma";
 
 export const updateUserService = async (
   id: string,
-  { name, datebirth, email, password }: IUserUpdate
+  { name, datebirth, email }: IUserUpdate
 ): Promise<IUser> => {
   const user = await prisma.user.findFirst({
     where: {
@@ -15,10 +15,12 @@ export const updateUserService = async (
       id: id,
     },
     data: {
-      name: name === "" ? user?.name : String(name),
-      datebirth: datebirth === "" ? user?.datebirth : String(datebirth),
-      email: email === "" ? user?.email : String(email),
-      password: password === "" ? user?.password : String(password),
+      name: name === "" || name === undefined ? user?.name : String(name),
+      datebirth:
+        datebirth === "" || datebirth === undefined
+          ? user?.datebirth
+          : String(datebirth),
+      email: email === "" || email === undefined ? user?.email : String(email),
     },
   });
 

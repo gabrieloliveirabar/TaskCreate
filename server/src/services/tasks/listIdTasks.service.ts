@@ -18,7 +18,6 @@ export const listIdTasksService = async (idParams: string): Promise<ITask> => {
         select: {
           id: true,
           name: true,
-          cpf: true,
           email: true,
         },
       },

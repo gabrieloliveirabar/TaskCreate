@@ -2,6 +2,7 @@ import { BsPlusCircleFill } from "react-icons/bs";
 import { ModalCreateTask } from "../../components/Modals/ModalCreateTask";
 import { useContext } from "react";
 import { TaskContext } from "../../context/TaskContext";
+import { ToastContainer } from "react-toastify";
 export const ImageAboutCreateTask = () => {
   const { setCreateTaskModal, createTaskModal } = useContext(TaskContext);
 
@@ -46,6 +47,7 @@ export const ImageAboutCreateTask = () => {
         </svg>
         {createTaskModal && <ModalCreateTask />}
       </div>
+      <ToastContainer />
     </div>
   );
 };

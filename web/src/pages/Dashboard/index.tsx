@@ -4,15 +4,16 @@ import headGuaxinim from "../../assets/cabecaGuaxinim.svg";
 import { ImageAboutCreateTask } from "../../components/ImageAboutCreateTask";
 import { ToastContainer } from "react-toastify";
 
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { UserContext } from "../../context/UserContext";
 import { ButtonAction } from "../../components/Buttons/ButtonAction";
 import { TaskContext } from "../../context/TaskContext";
 import { Task } from "../../components/Task";
-import { motion } from "framer-motion";
-
+import { BsLinkedin } from "react-icons/bs";
+import { AiFillGithub } from "react-icons/ai";
+import { HiOutlineMail } from "react-icons/hi";
 import { ModalCreateTask } from "../../components/Modals/ModalCreateTask";
-import { useNavigate, redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const Dashboard = () => {
   const { userObject } = useContext(UserContext);
@@ -21,7 +22,6 @@ export const Dashboard = () => {
     handleNextPage,
     handlePrevPage,
     tasks,
-    setTasks,
     setCreateTaskModal,
     createTaskModal,
     setFilter,
@@ -41,10 +41,10 @@ export const Dashboard = () => {
                 { name: "Sair", redirectTo: "/" },
               ]}
             />
-            <div className="flex flex-col justify-start items-center h-full p-4 tablet:flex-row">
-              <div className="flex flex-col justify-center items-center w-full ">
+            <div className="flex flex-col justify-start items-center h-full p-4 tablet:flex-row gap-3">
+              <div className="flex flex-col justify-center items-start w-full gap-7 ">
                 {userAdressObject == null ? (
-                  <div className="mb-5 mt-10 w-full">
+                  <div className="mb-5 mt-10 w-full flex justify-start items-center">
                     <p className="font-sans text-xl w-full text-left tablet:text-4xl ">
                       Você ainda não terminou seu cadastro, para completar,
                       acesse o seu{" "}
@@ -60,7 +60,14 @@ export const Dashboard = () => {
                     </p>
                   </div>
                 ) : (
-                  <div></div>
+                  <div>
+                    <p className="font-sans text-xl w-full text-left tablet:text-4xl">
+                      {" "}
+                      "Não é a falta de tempo que nos persegue, é a falta de
+                      organização!"
+                      <span className="italic text-sky-800"> Tuca Neves</span>
+                    </p>
+                  </div>
                 )}
 
                 {tasks.length >= 1 ? (
@@ -187,10 +194,48 @@ export const Dashboard = () => {
             <div
               className={`${
                 upImage
-                  ? "absolute h-screen w-screen  duration-700   bg-black bg-opacity-75"
+                  ? "absolute h-screen w-screen  duration-700   bg-black bg-opacity-80"
                   : ""
               }   `}
             >
+              <div
+                className={`${
+                  upImage ? "flex" : "hidden"
+                } w-full h-2/3  flex flex-col justify-center items-center gap-3 p-1`}
+              >
+                <p className="font-semibold text-3xl w-full text-center tablet:text-4xl">
+                  Olá sou Gabriel de Oliveira Barbosa, desenvolvedor web Full
+                  Stack e esse é o meu projeto!
+                </p>
+                
+                <a
+                  href="https://www.linkedin.com/in/gabriel-oliveira-barbosa"
+                  target="_blank"
+                  className="  border w-2/3 h-8   bg-white flex justify-center items-center text-2xl font-semibold text-black gap-2 border-spacing-3 border-black cursor-pointer hover:outline-none hover:scale-105 rounded
+                 focus:outline-none tablet:h-10 tablet:w-2/5 mt-4"
+                >
+                  LinkedIn
+                  <BsLinkedin style={{ color: "black" }} />
+                </a>
+                <a
+                  href="https://github.com/gabrieloliveirabar/TaskCreate"
+                  target="_blank"
+                  className="border w-2/3 h-8  bg-white flex justify-center items-center text-2xl font-semibold text-black gap-2 border-spacing-3 border-black cursor-pointer hover:outline-none hover:scale-105 rounded
+                 focus:outline-none tablet:h-10 tablet:w-2/5"
+                >
+                  Github
+                  <AiFillGithub style={{ color: "black" }} />
+                </a>
+                <a
+                  href="mailto:gboliveira2503@gmail.com"
+                  target="_blank"
+                  className="border w-2/3 h-8 bg-white flex justify-center items-center text-2xl font-semibold text-black gap-2 border-spacing-3 border-black cursor-pointer hover:outline-none hover:scale-105 rounded
+                 focus:outline-none tablet:h-10 tablet:w-2/5 "
+                >
+                  Email
+                  <HiOutlineMail style={{ color: "black" }} />
+                </a>
+              </div>
               <div
                 className={` bg-cover bg-center absolute  left-0 right-0 ${
                   upImage ? "bottom-0 " : "-bottom-20 "

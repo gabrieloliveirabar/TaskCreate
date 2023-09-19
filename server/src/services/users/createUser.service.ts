@@ -27,7 +27,7 @@ export const createUserService = async ({
   if (await emailExist) {
     throw new AppError("Email already registered.", 403);
   }
-
+  
   const user = await prisma.user.create({
     data: {
       name: String(name),
@@ -46,6 +46,5 @@ export const createUserService = async ({
       updated_at: true,
     },
   });
-
   return user;
 };

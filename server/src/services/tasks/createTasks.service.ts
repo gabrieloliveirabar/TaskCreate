@@ -20,14 +20,16 @@ export const createTaskService = async (
   const taskAlreadyexist = await prisma.task.findFirst({
     where: {
       title: title,
-      description: description,
+      user: {
+        id: userId
+      }
     },
   });
 
   if (taskAlreadyexist) {
     throw new AppError("task already exist");
   }
-
+  console.log("Ola");
   if (
     categorie === "health" ||
     categorie === "exercise" ||

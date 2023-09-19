@@ -59,12 +59,13 @@ export const TaskProvider = ({ children }: ITaskProvider) => {
 
     if (res === 204) {
       {
-        return toastSuccess("tarefa deletada");
+        return toastSuccess("Tarefa deletada");
       }
     }
   };
 
   const handleNextPage = () => {
+    console.log(tasks.length);
     if (currentPage < tasks.length) {
       setCurrentPage(currentPage + 1);
     }
@@ -81,6 +82,7 @@ export const TaskProvider = ({ children }: ITaskProvider) => {
         const page = String(currentPage);
         try {
           const { data } = await api.get(`tasks/${page}?filter=${filter}`);
+
           setTasks(data);
         } catch (err) {
           console.log(err);
@@ -88,7 +90,7 @@ export const TaskProvider = ({ children }: ITaskProvider) => {
       }
     };
     fechTask();
-  }, [currentPage, filter, tasks]);
+  }, [currentPage, filter, tasks[0]]);
 
   const typeCategorie = (categorie: string) => {
     let typeCateg = "";
