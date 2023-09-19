@@ -8,17 +8,20 @@ import { Input } from "../../components/Inputs/Input";
 import { UserContext } from "../../context/UserContext";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { IApiLogin } from "../../services/session/apiLogin";
+import { toastError, toastSuccess } from "../../components/ToastConfig";
 
 export const Login = () => {
   const { loginUserApi } = useContext(UserContext);
   const navigate = useNavigate();
 
-  const onSubmitFunction = async (data: object) => {
+  const onSubmitFunction = async (data: IApiLogin) => {
+    console.log(data)
     const res = await loginUserApi(data);
 
-    if (res === 200) {
-      navigate("/dashboard");
-    }
+    res === 200 ? ( navigate("/dashboard"), toastSuccess("login feito com sucesso")):toastError("ERRO no login")
+     
+    
   };
   return (
     <div>
@@ -51,7 +54,7 @@ export const Login = () => {
                       errors={errors}
                       placeHolder="digite sua senha"
                     />
-                    <ButtonAction width="52" lgWidth="96" height="" lgHeight="" functionAction={onSubmitFunction}>
+                    <ButtonAction width="52" lgWidth="96" height="" lgHeight="" functionAction={()=>{""}}>
                       Login
                     </ButtonAction>
                   </>

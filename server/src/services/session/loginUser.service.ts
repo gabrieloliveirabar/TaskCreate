@@ -9,14 +9,17 @@ import { AppError } from "../../errors/appError";
 export const loginUserService = async ({ email, password }: IUserLogin) => {
   const user = await prisma.user.findFirst({
     where: {
-      email: email,
+      email: String(email),
     },
+   
   });
+
+  
 
   if (!user) {
     throw new AppError("Wrong email/password", 403);
   }
-
+  console.log(user)
   if (password !== user?.password) {
     throw new AppError("Wrong email/password", 403);
   }
@@ -31,5 +34,6 @@ export const loginUserService = async ({ email, password }: IUserLogin) => {
     }
   );
 
+ 
   return token;
 };

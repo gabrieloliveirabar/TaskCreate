@@ -23,10 +23,9 @@ export const updateTasksService = async (
       },
       data: {
         categorie: categorie,
-        description: description === "" ? task?.description : description,
-        title: title === "" ? task?.title : title,
-        status: status,
-        
+        description: description === "" || undefined ? task?.description : description,
+        title: title === "" || undefined ? task?.title : title,
+        status: status === undefined ? task?.status : status,
       },
     });
     if (!updateTask) {
